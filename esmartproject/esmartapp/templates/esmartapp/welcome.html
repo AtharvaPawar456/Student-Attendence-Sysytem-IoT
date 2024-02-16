@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {% load static %}
+
+    <link rel="icon" type="image/png" href="{% static 'esmartapp\setup\esmartlogo.png' %}">
+    <link href="{% static 'esmartapp\setup\daisyui.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'esmartapp\setup\tailwindcss.js' %}"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>ESmart | Welcome</title>
+</head>
+
+<body style="height: 100vh; font-family: 'Poppins', sans-serif;" class="bg-white pb-4">
+    <div class="flex justify-center items-center h-screen flex-col">
+        <div class="flex-initial">
+            <img src="https://img.freepik.com/premium-vector/business-strategic-planning-illustration-concept-white-background_701961-1295.jpg" />
+        </div>
+        <div class="">
+            <center>
+                <h1 class="p-3 text-[32px] text-gray-500"><b>ESmart</b></h1>
+                <h5 class="text-gray-500">Smart Attendance System</h5>
+            </center>
+        </div>
+        <div class="p-3">
+            <a href="{% url 'user_login' %}" class="btn btn-wide bg-blue text-white px-4 py-2 rounded-md" style="background-color: #0082ce;">
+                Click me
+            </a>
+        </div>
+
+        <center class="w-3/5 mt-10">
+            <div class="p-3 text-[24px] text-gray-500 font-bold">About Us</div>
+            <div class="text-gray-500">eSmart is a cutting-edge smart attendance system designed to streamline attendance tracking processes for educational institutions and organizations. Our user-friendly platform leverages advanced technology to provide an efficient and accurate solution for managing attendance records.</div>
+        </center>
+
+        <!-- Footer -->
+        <center class="mt-10 mb-12 text-gray-600">
+            ESmart | 2024
+        </center>
+    </div>
+</body>
+</html>

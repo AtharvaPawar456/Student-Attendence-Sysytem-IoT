@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {% load static %}
+
+    <link rel="icon" type="image/png" href="{% static 'esmartapp\setup\esmartlogo.png' %}">
+    <link href="{% static 'esmartapp\setup\daisyui.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'esmartapp\setup\tailwindcss.js' %}"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>ESmart | Login</title>
+</head>
+<body style="height: 100vh; font-family: 'Poppins', sans-serif; background-color: rgb(253, 241, 226);">
+    <div class="flex  items-center h-screen flex-col">
+        <div class="flex-initial mb-2">
+            <img src="https://img.freepik.com/free-vector/group-people-illustration-set_52683-33806.jpg" />
+        </div>
+        <div class="">
+            <center>
+                <h1 class="p-3" style="font-size: 32px;"><b>Please Login</b></h1>
+            </center>
+        </div>
+        {% if error_message %}
+            <p class="text-center text-xl text-red-600">{{ error_message }}</p>
+        {% endif %}
+        <form @submit.prevent="submitForm" action="{% url 'user_login' %}"  method="post">
+            {% csrf_token %}
+            <!-- Input for Name -->
+            <div class="mb-4">
+                <input type="text" placeholder="Username" id="name" name="username" class="mt-1 p-3 rounded-2xl w-full">
+            </div>
+            <div class="mb-4">
+                <input type="password" placeholder="Password" id="password" name="password"class="mt-1 p-3 rounded-2xl w-full">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mb-4">
+                <button type="submit" class="btn btn-wide bg-blue text-white px-4 py-2 rounded-2xl" style="background-color: #529cfc;">Submit</button>
+            </div>
+        </form>
+        <div class="text-gray-800 ">
+            <p>Don't have an account? <a class="hover:underline hover:font-bold" href="{% url 'user_register' %}">Sign up</a></p>
+        </div>
+    </div>
+</body>
+</html>

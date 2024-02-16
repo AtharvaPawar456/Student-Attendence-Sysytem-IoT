@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    {% load static %}
+
+    
+    <link rel="icon" type="image/png" href="{% static 'esmartapp\setup\esmartlogo.png' %}">
+    <!-- <link href="{% static 'esmartapp\setup\daisyui.css' %}" rel="stylesheet" type="text/css" /> -->
+    <script src="{% static 'esmartapp\setup\tailwindcss.js' %}"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f8e031f1ae.js" crossorigin="anonymous"></script>
+    <style>
+        @keyframes changeColor {
+            0% { color: #a80f5e; }
+            25% { color: #0fa82e; }
+            50% { color: #2a33a7; }
+            75% { color: #ae15bf; }
+            100% { color: #c9c74a; }
+          }
+      
+          span {
+            display: inline-block;
+            animation: changeColor 5s infinite; /* Adjust the duration as needed */
+          }
+        {% block css %} {% endblock %}</style>
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body style="font-family: 'Poppins', sans-serif;" class="bg-white">
+    <div class="grid grid-cols-2 gap-4" style="top: 0px;">
+        <div class="p-3">
+            <h5>Welcome,</h5>
+            <h2 class="text-gray-800 font-bold">{{ user.username|title }}</h2>
+        </div>
+        <div class="p-3 justify-end" >
+            <a href="{% url 'user_logout' %}" class="justify-center" style="float: right;">
+                <span class="fa-solid fa-right-from-bracket fa-2x"></span>    
+            </a>
+        </div>
+    </div>
+
+     <!-- Navbar - fixed -->
+     <section class="font-mono z-50">
+        <nav class="fixed z-50 bg-white top-0 left-0 w-full py-2 px-4 flex items-center justify-between border shadow-md">
+            <!-- Brand Logo and Name on the Left -->
+            <a class="flex items-center space-x-2" href="#">
+              <img src="{% static 'esmartapp\setup\esmartlogo.png' %}" alt="Logo" class="h-12 w-12 rounded-full border-2"> 
+                <!-- Adjust height and width as needed -->
+              <span class="text-2xl font-bold text-gray-600 hover:text-gray-900">ESmart</span>
+            </a>
+        
+            <!-- Tabs on the Right
+            <div class="flex items-center space-x-10">
+              <a href="#seasonal_items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Seasonal Items</a>
+              <a href="#items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">All Food Items</a>
+              <a href="#contact" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Contact</a>
+            </div> -->
+
+            <!-- Tabs on the Right - responsive -->
+          <div class="hidden md:flex items-center space-x-10">
+            <a href="#software" class="text-xl text-gray-600 font-bold hover:underline hover:text-green-600">Dashboard</a>
+            <a href="#software" class="text-xl text-gray-600 font-bold hover:underline hover:text-green-600">Classes</a>
+            <a href="#hardware" class="text-xl text-gray-600 font-bold hover:underline hover:text-green-600">Students</a>
+            <a href="#contact"  class="text-xl text-gray-600 font-bold hover:underline hover:text-green-600">Contact</a>
+          </div>
+
+           <!-- Mobile Menu Toggle (Hamburger Icon) -->
+            <div class="md:hidden">
+              <button id="mobileMenuToggle" class="text-xl text-gray-600 hover:text-gray-900">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                  </svg>
+              </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white py-2 px-4 shadow-md">
+              <a href="#software" class="block text-sm text-gray-600 font-bold hover:underline hover:text-gray-900">Software-Projects</a>
+              <a href="#hardware" class="block text-sm text-gray-600 font-bold hover:underline hover:text-gray-900">Hardware-Projects</a>
+              <a href="#contact" class="block text-sm text-gray-600 font-bold hover:underline hover:text-gray-900">Contact</a>
+          </div>
+
+          </nav>
+    </section>
+
+
+
+    {% block content %}{% endblock %}
+
+
+
+
+
+<div class="bg-gray-800 text-white py-4 hidden">
+    <div class="container mx-auto flex justify-center">
+        <a href="{% url 'dashboard' %}" class="mx-2 bg-blue-500 text-white px-4 py-2 rounded-md">
+            <i class="fa-solid fa-home"></i>
+        </a>
+        <a href="{% url 'dashboard' %}" class="mx-2 bg-green-500 text-white px-4 py-2 rounded-md">
+            <i class="fa-solid fa-comments"></i>
+        </a>
+        <a href="{% url 'dashboard' %}" class="mx-2 bg-yellow-500 text-white px-4 py-2 rounded-md">
+            <i class="fa-solid fa-circle-plus"></i>
+        </a>
+        <a href="{% url 'dashboard' %}" class="mx-2 bg-red-500 text-white px-4 py-2 rounded-md">
+            <i class="fa-solid fa-gears"></i>
+        </a>
+        <a href="{% url 'dashboard' %}" class="mx-2 bg-purple-500 text-white px-4 py-2 rounded-md">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+        </a>
+    </div>
+</div>
+</body>
+</html>
